@@ -1,0 +1,73 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" routerLink="/home">MovieFlix</a>
+        </div>
+    </div>
+</nav>
+
+<div id="signup_dialog">
+    <div class="form-group">
+        <h1 id="heading">Signup</h1>
+        <form (ngSubmit)="onSignup(first_name.value,last_name.value,user_name.value,email.value,password.value,confirm.value)" novalidate #userForm="ngForm">
+            <div class="form-group">
+                <label for="first_name"><font color="red">*</font> First Name</label>
+                <input type="text" #first_name name="first_name" id="first_name" #inputFirstName="ngModel" [(ngModel)]="user.firstName" required minlength="3" class="form-control">
+                <div *ngIf="inputFirstName.errors && inputFirstName.dirty" class="errors">
+                    <p [hidden]="!inputFirstName.errors.required">Please enter your First Name</p>
+                    <p [hidden]="!inputFirstName.errors.minlength">First Name must have at least 3 characters</p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="last_name"><font color="red">*</font> Last Name</label>
+                <input type="text" #last_name name="last_name" id="last_name" #inputLastName="ngModel" [(ngModel)]="user.lastName" required minlength="3" class="form-control">
+                <div *ngIf="inputLastName.errors && inputLastName.dirty" class="errors">
+                    <p [hidden]="!inputLastName.errors.required">Please enter your Last Name</p>
+                    <p [hidden]="!inputLastName.errors.minlength">Last Name must have at least 3 characters</p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="user_name"><font color="red">*</font> User Name</label>
+                <input type="text" #user_name name="user_name" id="user_name" #inputUserName="ngModel" [(ngModel)]="user.userName" required minlength="3" class="form-control">
+                <div *ngIf="inputUserName.errors && inputUserName.dirty" class="errors">
+                    <p [hidden]="!inputUserName.errors.required">Please enter your User Name</p>
+                    <p [hidden]="!inputUserName.errors.minlength">Last Name must have at least 3 characters</p>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label for="email"><font color="red">*</font> Email</label>
+                <input type="email" #email name="email" id="email" #inputEmail="ngModel" [(ngModel)]="user.emailId" required minlength="5" class="form-control">
+                <div *ngIf="inputEmail.errors && inputEmail.dirty" class="errors">
+                    <p [hidden]="!inputEmail.errors.required">Please enter your Email</p>
+                    <p [hidden]="!inputEmail.errors.minlength">Email must have at least 5 characters</p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="password"><font color="red">*</font> Choose Password</label>
+                <input type="password" #password name="password" id="password" #inputPassword="ngModel" [(ngModel)]="user.password" required minlength="6" class="form-control">
+                <div *ngIf="inputPassword.errors && inputPassword.dirty" class="errors">
+                    <p [hidden]="!inputPassword.errors.required">Please enter your Password</p>
+                    <p [hidden]="!inputPassword.errors.minlength">Password must have at least 6 characters</p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="confirm"><font color="red">*</font> Retype Password</label>
+                <input type="password" #confirm name="confirm" id="confirm" #inputPasswordConfirm="ngModel" [(ngModel)]="user.name" required minlength="3" class="form-control">
+                <div *ngIf="inputPasswordConfirm.errors && inputPasswordConfirm.dirty" class="errors">
+                    <p [hidden]="!inputPasswordConfirm.errors.required">Please re-enter your Password</p>
+                </div>
+            </div>
+
+            <div class="button-panel">
+                <button id="signup_btn" type="submit" [disabled]="userForm.form.invalid" class="btn btn-danger">Register</button>
+            </div>
+        </form>
+        <h5>Already a registered user?<a routerLink="/login">Sign in here</a></h5>
+    </div>
+</div>
